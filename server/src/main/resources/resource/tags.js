@@ -10,9 +10,13 @@ module.exports.tagsResource = function(app, options) {
 	}
 
 	function readJSONFiles(folder) {		
-		var ret = [], files = fs.readdirSync(folder);
+		var files = fs.readdirSync(folder);
+		var ret = [];
 		for (fileIndex = 0; fileIndex < files.length; fileIndex++) {
-			ret.push(readJSONFile( folder + "/" + files[fileIndex] ))
+			var file = folder + "/" + files[fileIndex];
+			if (fs.statSync(file).isFile()) {
+				ret.push(readJSONFile( file ));
+			}
 		}
 
 		return ret;

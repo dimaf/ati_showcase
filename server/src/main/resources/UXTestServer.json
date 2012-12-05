@@ -1,7 +1,7 @@
 
 {
 	"rootDir" : "../../../../../../",
-	"webAppFolder" : "ati-mobile-cloud-training/appPackage",
+	"webAppFolder" : "ati_showcase/appPackage",
 	"port"	: 88,
 
 	"jsmvcRoute" : {
@@ -10,7 +10,7 @@
 		"common_ux_js_lib_internal"		: "common-ux-js-framework/common-ux-js-lib-internal",
 		"common_ux_js_lib_thirdparty"	: "common-ux-js-lib-thirdparty",
 		"common_ux_js_controls"			: "common-ux-js-framework/common-ux-js-controls",
-		"ati_mobile_cloud_training"		: "ati-mobile-cloud-training/app"
+		"ati_showcase"					: "ati_showcase/app"
 	},
 
 	"serviceRoute" : {
