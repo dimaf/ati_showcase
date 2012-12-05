@@ -1,0 +1,51 @@
+{
+	"StandardRS" : {
+		"Success" : true,
+		"CorrelationID" : "60",
+		"Version" : "1.0.6"
+	},
+	"Location" : [{
+			"Currency" : [{
+					"Code" : "KWD",
+					"DefaultIndicator" : "N"
+				}, {
+					"Code" : "ILS",
+					"DefaultIndicator" : "N"
+				}, {
+					"Code" : "USD",
+					"DefaultIndicator" : "Y"
+				}
+			],
+			"Code" : "33992696",
+			"Airport" : "JFK",
+			"Carrier" : "LX",
+			"LocationName" : "NEW YORK"
+		}, {
+			"Currency" : [{
+					"Code" : "MXN",
+					"DefaultIndicator" : "N"
+				}, {
+					"Code" : "USD",
+					"DefaultIndicator" : "Y"
+				}
+			],
+			"Code" : "12375261",
+			"Airport" : "DFW",
+			"Carrier" : "LX",
+			"LocationName" : "IRVING"
+		}, {
+			"Currency" : [{
+					"Code" : "MXN",
+					"DefaultIndicator" : "N"
+				}, {
+					"Code" : "USD",
+					"DefaultIndicator" : "Y"
+				}
+			],
+			"Code" : "99999999",
+			"Airport" : "DFW",
+			"Carrier" : "LX",
+			"LocationName" : "My Home"
+		}		
+	]
+}

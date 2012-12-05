@@ -1,0 +1,17 @@
+{
+	"InteractiveTimeoutMin" : 10,
+	"customisableUserPreferencesSupport" : "false",
+	"defaultUserPreferences" : {
+		"UILocal": "en",
+		"DataLocal": "en",
+		"CountryCode":"US",
+		"defaultCurrency" : "USD",
+		"skin": "default",
+		"carrier": "Z2",
+		"carrierName" : "ATI",
+		"dateFormat":"dd/MM/yy",
+		"timeFormat":"hh:mm:ss tt",
+		"thousandSeparator":" ",
+		"decimalSeparator":"."
+	}
+}

@@ -1,0 +1,25 @@
+
+{
+	"rootDir" : "../../../../../../",
+	"webAppFolder" : "ati-mobile-cloud-training/appPackage",
+	"port"	: 88,
+
+	"jsmvcRoute" : {
+		"common_ux_js_shell"			: "common-ux-js-framework/common-ux-js-shell",
+		"common_ux_js_styles"			: "common-ux-js-styles",
+		"common_ux_js_lib_internal"		: "common-ux-js-framework/common-ux-js-lib-internal",
+		"common_ux_js_lib_thirdparty"	: "common-ux-js-lib-thirdparty",
+		"common_ux_js_controls"			: "common-ux-js-framework/common-ux-js-controls",
+		"ati_mobile_cloud_training"		: "ati-mobile-cloud-training/app"
+	},
+
+	"serviceRoute" : {
+	},
+
+	"folderRoute" : {
+		"/webapp/steal" 	: "common-ux-js-mvc-framework/src/main/javascript/steal",
+		"/webapp/jquery" 	: "common-ux-js-mvc-framework/src/main/javascript/jquery",
+		"/webapp/funcunit" 	: "common-ux-js-mvc-framework/src/main/javascript/funcunit"
+	}
+
+}

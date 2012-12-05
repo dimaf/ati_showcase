@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8">
+		 <link rel="stylesheet" type="text/css" href="common_ux_js_styles/themes/default/waitscreen.css" />
+</head>
+<body class="noSelect"  onselectstart = "">
+	<div class="waitscreen">
+		<div class="center">
+			<img src="common_ux_js_styles/themes/default/images/waitlogo.png" alt="HP" />
+			<br />
+			<img class="wait" src="common_ux_js_styles/themes/default/images/loading.gif" alt="loading" />
+			<br />
+			<div class="status">Loading...</div>
+		</div>
+
+		<div class="footer">
+			<div class="version">Version 1a</div>
+			<div class="company">2012 Hewlett-Packard Development Company. LP</div>
+		</div>
+	</div>   
+		<script>
+		var hasCF=true;
+		bootstrapperDefaults = {			
+			"User"	: "atiUser",
+			"session": "false"
+		}
+		</script>
+		
+		<!--[if lte IE 8]>
+		<script type="text/javascript" src="common_ux_js_lib_thirdparty/CFInstall.js">
+		</script>
+		
+		<script>
+           CFInstall.check({
+             mode: "inline",
+             onmissing:function(){
+            	 hasCF=false;
+             }
+           });
+        </script>
+    	<![endif]-->   
+	    
+	    <script>   
+		    if ( hasCF){
+				var build="common_ux_js_shell/common_ux_js_Shell_Web_2.0.js,'development"
+					if (window.location.href.indexOf("production")>=0){
+					build="build/en-US-flyaway/build.js,production"
+				}
+				var oHead = document.getElementsByTagName('HEAD').item(0);
+				var oScript= document.createElement("script");
+				oScript.type = "text/javascript";
+				oScript.src='steal/steal.js?'+build;
+				oHead.appendChild( oScript); 
+			}          
+     	</script>
+</body>
+</html>

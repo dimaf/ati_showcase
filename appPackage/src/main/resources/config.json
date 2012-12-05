@@ -1,0 +1,9 @@
+{
+"clockFormat":"dd-MMM-yy, hh:mm",
+"showFooter":true,
+"Fixture.Security":"na",
+"Fixture.SecurityIATACodes":true,
+"Logger.Appenders":"A1",
+"Logger.Level":"DEBUG",
+"Logger.Appender.A1":"BrowserConsoleAppender"
+}

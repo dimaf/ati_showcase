@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<script>
+			var rd = localStorage.getItem("bootstrapperDefaults.remoteDebugging");
+			var sp = localStorage.getItem("bootstrapperDefaults.ServerPrefix")
+
+            if (rd === "true") {				
+				var rdebugScript = document.createElement('script');					
+				rdebugScript.setAttribute('type', 'text/javascript');
+				var host = sp.lastIndexOf(":") > 5 ? //not the first : so 5 >= http: 
+								sp.substr( 0, sp.lastIndexOf(":") ) : sp;
+				host += ":4444";
+				rdebugScript.setAttribute('src', host + "/target/target-script-min.js#anonymous");																												
+				document.head.appendChild( rdebugScript );								
+			}
+		</script>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="apple-touch-icon" href="images/icon.png" />
+		<link rel="apple-touch-icon" sizes="115x115" href="images/icon.png" />
+		<link rel="apple-touch-startup-image" href="images/icon.png" />
+		<link rel="stylesheet" type="text/css" href="./common_ux_js_styles/themes/default/waitscreen.css" />
+		<title>android_interface</title>
+		<script src="./common_ux_js_lib_thirdparty/phonegap/phonegap.js"></script>
+		<script>
+
+			function getQueryString(sVar) {
+				urlStr = window.location.search.substring(1);
+				sv = urlStr.split("&");
+				for (i=0;i< sv.length;i++) {
+					ft = sv [i].split("=");
+					if (ft[0] == sVar) {
+						return ft[1];
+					}
+				}
+			}
+
+			bootstrapperDefaults = {
+					"ServerPrefix" 	  : getQueryString("ServerPrefix") 	|| localStorage.getItem("bootstrapperDefaults.ServerPrefix") || window.location.origin,
+					"User" 			  : getQueryString("User")			|| localStorage.getItem("bootstrapperDefaults.User") || "tabletUser",
+					"remoteDebugging" : getQueryString("remoteDebugging")|| localStorage.getItem("bootstrapperDefaults.remoteDebugging") || "false",
+					"options" 		  : getQueryString("options")		|| localStorage.getItem("bootstrapperDefaults.options"),
+					
+					"src" 			  : getQueryString("src")			|| localStorage.getItem("bootstrapperDefaults.src") || ".",
+					"shell" 		  : getQueryString("shell")			|| localStorage.getItem("bootstrapperDefaults.shell") || "Android_2.0",
+					"production"	  : getQueryString("production")    || localStorage.getItem("bootstrapperDefaults.production") || "false"				
+			};
+
+			var bootTimer = window.setTimeout("callApp()", 3000);
+			window.onkeypress = showForm;
+			window.onclick = showForm;
+			document.addEventListener("touchstart", showForm);
+		
+			function showForm() {				
+				removeEventHandler();
+				if(document.Defaultsform){
+					document.Defaultsform.style.visibility = "visible";
+				}
+			}
+
+			function removeEventHandler() {
+				window.clearTimeout(bootTimer);
+				delete bootTimer;
+				document.removeEventListener("touchstart", showForm);
+				window.onkeypress = null;
+				window.onclick = null;
+			}
+
+			
+			function initForm() {			
+				document.Defaultsform.ServerPrefix.value 	= bootstrapperDefaults.ServerPrefix;
+				document.Defaultsform.User.value 			= bootstrapperDefaults.User;
+				document.Defaultsform.remoteDebugging.value = bootstrapperDefaults.remoteDebugging;
+				document.Defaultsform.production.value 		= bootstrapperDefaults.production;
+				document.Defaultsform.options.value 		= bootstrapperDefaults.options;				
+				
+				document.Defaultsform.Src.value 			= bootstrapperDefaults.src;
+				document.Defaultsform.Shell.value 			= bootstrapperDefaults.shell;			
+
+				if (window.location.search !== "") {
+					callApp();
+				}
+			}
+			
+			function callApp() {
+				removeEventHandler();
+				document.getElementById("status").innerText = "Loading...";
+				bootstrapperDefaults = {
+					"ServerPrefix" 		: document.Defaultsform.ServerPrefix.value,
+					"User" 				: document.Defaultsform.User.value,
+					"remoteDebugging"	: document.Defaultsform.remoteDebugging.value,
+					"options" 			: document.Defaultsform.options.value,
+					"production"		: document.Defaultsform.production.value,
+					
+					"src" 				: document.Defaultsform.Src.value,
+					"shell" 			: document.Defaultsform.Shell.value,
+					"session"			: "false"
+				};
+
+				localStorage.setItem("bootstrapperDefaults.ServerPrefix", bootstrapperDefaults.ServerPrefix);
+				localStorage.setItem("bootstrapperDefaults.User", bootstrapperDefaults.User);
+				localStorage.setItem("bootstrapperDefaults.remoteDebugging", bootstrapperDefaults.remoteDebugging);
+				localStorage.setItem("bootstrapperDefaults.options", bootstrapperDefaults.options);
+				localStorage.setItem("bootstrapperDefaults.production", bootstrapperDefaults.production);
+					
+				localStorage.setItem("bootstrapperDefaults.src", bootstrapperDefaults.src);
+				localStorage.setItem("bootstrapperDefaults.shell", bootstrapperDefaults.shell);
+				
+				document.Defaultsform.innerHTML = "";
+					
+				if (bootstrapperDefaults.src.indexOf("http") === 0) {
+					window.location = bootstrapperDefaults.src +					
+											 "/androidIndex.html?ServerPrefix="+ bootstrapperDefaults.ServerPrefix + 
+											 "&User="+bootstrapperDefaults.User + 
+											 "&remoteDebugging="+bootstrapperDefaults.remoteDebugging +
+											 "&options="+bootstrapperDefaults.options +
+											 "&src=."+
+											 "&shell="+bootstrapperDefaults.shell;
+				} else {
+					var oScript = document.createElement('script');
+					oScript.setAttribute('type', 'text/javascript');
+					
+					var build='common_ux_js_shell/common_ux_js_Shell_' + bootstrapperDefaults.shell + '.js,development'
+					if (bootstrapperDefaults.production === "true"){
+							build="build/en-US-tablet_Android/build.js,production"
+					}
+					
+					oScript.setAttribute('src', bootstrapperDefaults.src + '/steal/steal.js?'+build);
+																
+					document.head.appendChild( oScript );				
+				}
+
+				return false;
+			}
+			
+		</script>
+	</head>
+	
+	<body>	
+		<div class="waitscreen">
+		
+			<form name="Defaultsform" style="visibility: hidden;" method="post" action="http://sdsd" onsubmit="return callApp();">
+				ServerPrefix: <input type="text" name="ServerPrefix"  /><br />
+				User: <input type="text" name="User"  /><br />
+				remoteDebugging: <input type="text" name="remoteDebugging"  /><br />
+				production: <input type="text" name="production"  /><br />
+				options: <input type="text" name="options"  /><br />
+				Src: <input type="text" name="Src" /><br />
+				
+				Shell: <select name="Shell">
+					<option>Android_2.0</option>
+					<option>Android_1.0</option>
+					<option>Web_1.0</option>
+					<option>Web_1.5</option>
+					<option>Web_2.0</option>
+					<option>Web_2.0_Device</option>
+				</select><br />
+				<input type="submit" value="OK" />
+			</form>	
+			
+			<div class="center">
+				<img src="common_ux_js_styles/themes/default/images/waitlogo.png" alt="HP" />
+				<br />
+				<img class="wait" src="common_ux_js_styles/themes/default/images/loading.gif" alt="loading" />
+				<br />
+				<div id="status" class="status">Booting ...</div>
+			</div>
+
+			<div class="footer">
+				<div class="version">Version 1a</div>
+				<div class="company">2012 Hewlett-Packard Development Company. LP</div>
+			</div>
+		</div>   
+		
+
+		<script>
+			initForm();
+		</script>		
+	</body>
+</html>
