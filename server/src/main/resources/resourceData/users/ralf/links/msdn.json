@@ -1,0 +1,13 @@
+{
+	"name" : "MSDN",
+	"link" : "http://msdn.microsoft.com",
+	"description" : "",
+	"tags" : [{
+			"visibility" : "private",
+			"name" : "NName"
+		}, {
+			"visibility" : "public",
+			"name" : "ptest"
+		}
+	]
+}

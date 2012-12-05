@@ -46,6 +46,7 @@ readConfigFile = function(path, next) {
 init = function() {
 
 	require('./resource/tags.js').tagsResource(app, {mockFolder: __dirname + "/resourceData/tags/"});
+	require('./resource/users.js').tagsResource(app, {mockFolder: __dirname + "/resourceData/users/"});	
 
 	app.use("/webapp/app.apk", function(req, res, next) {
 		fs.readdir(cfg.rootDir + cfg.webAppFolder + "/target", function(err, list) {

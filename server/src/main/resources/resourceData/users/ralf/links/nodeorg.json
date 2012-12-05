@@ -1,0 +1,13 @@
+{
+	"name" : "NodeJsOrg",
+	"link" : "http://nodejs.org",
+	"description" : "",
+	"tags" : [{
+			"visibility" : "private",
+			"name" : "NName"
+		}, {
+			"visibility" : "public",
+			"name" : "ptest"
+		}
+	]
+}

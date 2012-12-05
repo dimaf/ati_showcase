@@ -1,54 +1,23 @@
 var express = require('express');
 var fs = require('fs');
+var helper = require('./helper.js');
 
 
 module.exports.tagsResource = function(app, options) {
-
-	function readJSONFile(filename) {
-		var dateStr = fs.readFileSync(filename, "UTF8");
-		return JSON.parse(dateStr);
-	}
-
-	function readJSONFiles(folder) {		
-		var files = fs.readdirSync(folder);
-		var ret = [];
-		for (fileIndex = 0; fileIndex < files.length; fileIndex++) {
-			var file = folder + "/" + files[fileIndex];
-			if (fs.statSync(file).isFile()) {
-				ret.push(readJSONFile( file ));
-			}
-		}
-
-		return ret;
-	}
-
 	console.log(" tagsResource " + options.mockFolder);
 
 	app.get("/tags", function(req, res) {
-		res.send( readJSONFiles(options.mockFolder) );
+		res.send( helper.readJSONFiles(options.mockFolder) );
 	});
 
 	app.get("/tags/:TagID", function(req, res) {
 		try {
-			var tag = readJSONFile( options.mockFolder + req.params.TagID.toLowerCase() + ".json");
+			var tag = helper.readJSONFile( options.mockFolder + req.params.TagID.toLowerCase() + ".json");
 			res.send(tag);
 		} catch (error) {
-			res.send(400, {errorCode: 100, errorText : "No Data"});
+			helper.exceptionResponse(res, 100, "No Data");
 		}
 		
 	});
-/*
-	app.get("/tags/:UID", function(req, res) {
-		res.send({tags:[ {"name":"testName" + req.params.UID, "description":"description name .."} ]});
-	});	
-*/
-	app.get("/tags/:UID/:TagID", function(req, res) {
-		try {
-			var tag = readJSONFile( options.mockFolder + req.params.UID.toLowerCase() + "/" + req.params.TagID.toLowerCase() + ".json");
-			res.send(tag);
-		} catch (error) {
-			res.send(400, {errorCode: 100, errorText : "No Data"});
-		}
-	});		
 
 }
