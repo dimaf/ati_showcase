@@ -1,6 +1,6 @@
 
 {
-	"rootDir" : "../../../../../../",
+	"rootDir" : "\\..\\..\\..\\..\\..\\..\\",
 	"webAppFolder" : "ati_showcase/appPackage",
 	"port"	: 88,
 
@@ -10,7 +10,7 @@
 		"common_ux_js_lib_internal"		: "common-ux-js-framework/common-ux-js-lib-internal",
 		"common_ux_js_lib_thirdparty"	: "common-ux-js-lib-thirdparty",
 		"common_ux_js_controls"			: "common-ux-js-framework/common-ux-js-controls",
-		"ati_showcase"					: "ati_showcase/app"
+		"showcase"						: "ati_showcase/showcase"
 	},
 
 	"serviceRoute" : {

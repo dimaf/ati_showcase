@@ -90,7 +90,7 @@ init = function() {
 		// more or less only for the index.html page
 		app.use("/webapp", express.static(cfg.rootDir + cfg.webAppFolder + "/src/main/webapp"));
 
-		app.use("/webapp/build", express.static(cfg.rootDir + cfg.webAppFolder + "/target/" + cfg.webAppFolder + "/build"));
+		app.use("/webapp/build", express.static(cfg.rootDir + cfg.webAppFolder + "/target/" + (cfg.webAppFolder.indexOf("/")>0?cfg.webAppFolder.substr(cfg.webAppFolder.indexOf("/")+1):cfg.webAppFolder) + "/build"));
 
 		console.log("Folder Routes");
 		for (var folderKeyNames in cfg.folderRoute) {

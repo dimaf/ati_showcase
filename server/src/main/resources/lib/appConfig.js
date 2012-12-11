@@ -29,7 +29,7 @@ var AppConfig= function() {
 	this.cfg = JSON.parse(data);
 	this.cfg.port = program.port || this.cfg.port || 8080;
 
-	this.cfg.rootDir = __dirname + "../" + this.cfg.rootDir;	
+	this.cfg.rootDir = __dirname +  this.cfg.rootDir;	
 }
 
 AppConfig.prototype = {
