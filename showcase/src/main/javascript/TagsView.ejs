@@ -1,0 +1,10 @@
+Tags
+<table>
+	<%
+	steal.dev.log("Rendering")
+	for(i=0;i<this.length;++i){%>
+		<tr>
+			<td><%=this[i].name%></td> <td><%=this[i].description%></td>
+		</tr>
+	<%}%>
+</table>
