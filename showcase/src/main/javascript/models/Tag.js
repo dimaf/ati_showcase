@@ -4,9 +4,9 @@ steal("jquery/model",
 	function(){
 	$.Model("Tag",{
 		create  : {src: "POST /users/{userid}/tags",retry:false},
-		destroy  : {src: "DELETE /users/{userid}/{id}",retry:false},
-		findOne : {src: "GET /users/{userid}/{id}",retry:false},
+		destroy  : {src: "DELETE /users/{userid}/tags/{id}",retry:false},
+		findOne : {src: "GET /users/{userid}//tags/{id}",retry:false},
 		findAll : {src: "GET /users/{userid}/tags",retry:false},
-		update  : {src: "PUT /users/{userid}/{id}",retry:false}
+		update  : {src: "PUT /users/{userid}/tags/{id}",retry:false}
 	},{})
 })
