@@ -8,5 +8,5 @@ steal("jquery/model",
 		findOne : {src: "GET /users/{userid}/links/{id}",retry:false},
 		findAll : {src: "GET /users/{userid}/links",retry:false},
 		update  : {src: "PUT /users/{userid}/links/{id}",retry:false}
-	},{})
-})
+	},{});
+});
