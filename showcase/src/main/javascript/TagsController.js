@@ -24,13 +24,13 @@ steal("jquery/controller",
 			}).fail(this.proxy("loginFailedHandler"));
 			
 		},
-		"#new-user click":function(el,ev){
+		"#new-user click":function(el,ev){			
 			var user=new User({name:this.find("#user").val()});
 			var self=this;
 			user.save().done(function(data){
-				this.userName=data.name;
+				self.userName=data.name;
 				self.find("#myModal").modal("hide");
-				self.reload();
+				self.find("#main").html("//showcase/views/tags.ejs",data);
 			}).fail(this.proxy("loginFailedHandler"));
 		},
 		"#create-tag click":function(){
@@ -53,13 +53,24 @@ steal("jquery/controller",
 				description:this.find("#LinkDescription").val(),
 				link:this.find("#Link").val(),
 				userid:this.userName
-			}).save().done(this.proxy("reload"))
+			}).save().done(this.proxy("reloadLinks"))
 			.fail(function(data){
 				self.find("#create-error").text(data.responseText);
 				self.find(".alert").show();
 
 			});
 		},
+
+		".deleteTag click" : function(el) {
+			el.closest('.tag').model().destroy();
+			this.reload();
+		},
+
+		".deleteLink click" : function(el) {
+			el.closest('.link').model().destroy();
+			this.reload();
+		},
+
 		loginFailedHandler:function(data){
 			this.find("#login-error").text(data.responseText);
 			this.find(".alert").show();
@@ -68,8 +79,13 @@ steal("jquery/controller",
 			this.reload();
 		},
 		"#links click":function(){
+			this.reloadLinks();
+		},
+
+		reloadLinks:function(){
 			this.find("#main").html(this.view("//showcase/views/links.ejs",Link.findAll({userid:this.userName})));
 		},
+		
 		reload:function(){
 			this.find("#main").html(this.view("//showcase/views/tags.ejs",Tag.findAll({userid:this.userName})));
 		}

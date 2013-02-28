@@ -38,9 +38,9 @@
 			<%
 			steal.dev.log("Rendering")
 			for(i=0;i<this.length;++i){%>
-				<tr>
+				<tr <%= this[i]%> >
 					<td><%=this[i].name%></td> <td><%=this[i].description%></td>
-					<td><button class="close">&times;</button></td>
+					<td><button class="close deleteTag">&times;</button></td>
 				</tr>
 			<%}%>
 		 </tbody>

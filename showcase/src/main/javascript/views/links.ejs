@@ -44,10 +44,10 @@
 			<%
 			steal.dev.log("Rendering")
 			for(i=0;i<this.length;++i){%>
-				<tr>
+				<tr <%= this[i]%>>
 					<td><a href="<%=this[i].link%>" target="_blank"><%=this[i].name%></a></td> 
           <td><%=this[i].description%></td>
-					<td><button class="close">&times;</button></td>
+					<td><button class="close deleteLink">&times;</button></td>
 				</tr>
 			<%}%>
 		 </tbody>
