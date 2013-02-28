@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../funcunit/qunit/qunit.css" />
+		<title>UX Framework Test Suite</title>
+		<script type='text/javascript'>
+			steal = {ignoreControllers: true}
+		</script>
+		<!--<script type='text/javascript' src='../steal/steal.js?common_ux_js_lib_internal/test/qunit'></script>
+		script type='text/javascript' src='./test/qunit/caf_fp_js_lib_internal_text.js'></script>  -->
+		<script>       
+			var build="showcase/test/qunit"
+				if (window.location.href.indexOf("production")>=0){
+				build="showcase/test/qunit/framework_emd_test.js"
+			}
+			var oHead = document.getElementsByTagName('HEAD').item(0);
+			var oScript= document.createElement("script");
+			oScript.type = "text/javascript";
+			oScript.src='../steal/steal.js?'+build;
+			oHead.appendChild( oScript); 
+     	</script>
+	</head>
+	<body>
+
+		<h1 id="qunit-header">UX Framework Test Suite</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<div id="test-content"></div>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-test-area"></div>
+	</body>
+</html>

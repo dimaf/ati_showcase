@@ -1,5 +1,7 @@
 /*globals TagsController*/
-steal('jquery','showcase/TagsController.js',
+steal('jquery',"steal/less")
+.then("common_ux_js_lib_thirdparty/bootstrap/less/bootstrap.less",
+	'showcase/TagsController.js',
 		function() {
 			$(document).ready(function($) {
 				$(".waitscreen").fadeOut(500,function(){

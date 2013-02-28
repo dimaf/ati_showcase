@@ -1,0 +1,1 @@
+steal('./TagsControllerTest.js')
