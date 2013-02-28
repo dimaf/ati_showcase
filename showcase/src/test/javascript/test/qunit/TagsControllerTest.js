@@ -3,9 +3,9 @@ steal("funcunit/qunit",
 	  "showcase/TagsController.js",
 	  function(){
 
-	module("common_ux_js_lib_internal HPText");
+	module("TagsController Test");
 
-	test("HPText test", function(el){
+	test("Empty test", function(el){
 		var elem = $("<div></div>").appendTo( $("#qunit-test-area") );
 		new TagsController(elem,{name:"ralf"});
 		elem.remove()

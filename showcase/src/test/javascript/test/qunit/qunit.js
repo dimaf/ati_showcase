@@ -1,1 +1,1 @@
-steal('./TagsControllerTest.js')
+steal('jquery').then('./TagsControllerTest.js')
