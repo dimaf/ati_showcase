@@ -140,4 +140,4 @@ console.log("root dir " + cfg.rootDir);
 
 init();
 
-app.listen(cfg.port, '0.0.0.0');
+app.listen(process.env.port || cfg.port, '0.0.0.0');
